@@ -38,7 +38,8 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
-    }, {
+    },
+    {
       path: '/features',
       name: 'features',
       getComponent(nextState, cb) {
@@ -46,7 +47,17 @@ export default function createRoutes(store) {
           .then(loadModule(cb))
           .catch(errorLoading);
       },
-    }, {
+    },
+    {
+      path: '/services',
+      name: 'services',
+      getComponent(nextState, cb) {
+        import('containers/ServicePage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    },
+    {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
@@ -54,6 +65,6 @@ export default function createRoutes(store) {
           .then(loadModule(cb))
           .catch(errorLoading);
       },
-    },
+    }
   ];
 }
